@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django1 - index</title>
+    {% load static %}  <!-- Carrega a biblioteca de arquivos estáticos -->
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}"> <!-- Link para o CSS -->
+    <script defer src="{% static 'myapp/js/script.js' %}"></script>
+</head
+><style>
+   body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.table-container {
+    margin: auto;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2a2a2a;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #3b3b3b;
+    color: #ff3d00; /* Um vermelho intenso para o cabeçalho */
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #555; /* Efeito hover nas linhas */
+}
+
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #ff3d00; /* Botão vermelho */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #e03d00; /* Tom mais escuro ao passar o mouse */
+}
+
+</style>
+<body>
+    <h1> Texto inicial</h1>
+
+    <h2>{{curso}}</h2><!--Chamando a chave do dicionario-->
+    <img src="{% static 'images/Don.jpg' %}"/>
+    <h1> Lista de E.G.O. cadastrados</h1>
+    <table>
+        <thead>
+            <tr> <!--Criando colunas -->
+                <th>E.G.O.</th>
+                <th>preco</th>
+            </tr>
+            <tbody> <!--Criando o corpo da tabela -->
+            {% for produto in produto %}
+            <tr>
+                <td><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a></td>
+                <td>{{ produto.preco }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="teste();">Clique aqui</button>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script
+</body>
+
+</html>
